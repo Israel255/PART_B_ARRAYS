@@ -1,0 +1,137 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Q_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a;
+            int[] b;
+            full_the_arrays(out a,out b);
+            if (Measure(a,b) == 1)
+            {
+                Console.WriteLine("a won");
+            }
+            else if (Measure(a,b) == -1)
+            {
+                Console.WriteLine("b won");
+            }
+            else
+            {
+                Console.WriteLine("it's a tie");
+            }
+        }
+        private static void full_the_arrays(out int[] a,out int[] b)
+        {
+            Random r = new Random();
+            int a_lengh = r.Next(1, 11);
+            int b_lengh = r.Next(1, 11);
+            a = new int[a_lengh];
+            b = new int[b_lengh];
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = r.Next(101);
+            }
+            for (int i = 0; i < b.Length; i++)
+            {
+                b[i] = r.Next(101);
+            }
+        }
+        static int Measure(int[] a, int[] b)
+        {
+            full_the_arrays(out a,out b);
+            int a_points = 0;
+            int b_points = 0;
+            int a_won = 1;
+            int b_won = -1;
+            int tie = 0;
+            if (a.Length < b.Length)
+            {
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (a[i] > b[i])
+                    {
+                        a_points++;
+                    }
+                    else if (a.Length < b.Length)
+                    {
+                        b_points++;
+                    }
+                }
+                if (a_points > b_points)
+                {
+                    return a_won;
+                }
+                else if (a_points < b_points)
+                {
+                    return b_won;
+                }
+                else
+                {
+                    return tie;
+                }
+            }
+            else if (a.Length > b.Length)
+            {
+                for (int i = 0; i < b.Length; i++)
+                {
+                    if (a[i] > b[i])
+                    {
+                        a_points++;
+                    }
+                    else if (a.Length < b.Length)
+                    {
+                        b_points++;
+                    }
+                }
+                if (a_points > b_points)
+                {
+                    return a_won;
+                }
+                else if (a_points < b_points)
+                {
+                    return b_won;
+                }
+                else
+                {
+                    return tie;
+                }
+            }
+            else if (a.Length == b.Length)
+            {
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (a[i] > b[i])
+                    {
+                        a_points++;
+                    }
+                    else if (a.Length < b.Length)
+                    {
+                        b_points++;
+                    }
+                }
+                if (a_points > b_points)
+                {
+                    return a_won;
+                }
+                else if (a_points < b_points)
+                {
+                    return b_won;
+                }
+                else
+                {
+                    return tie;
+                }
+            }
+            else
+            {
+                return tie;
+            }
+        }
+    }
+}
